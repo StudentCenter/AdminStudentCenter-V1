@@ -24,10 +24,33 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Admin Student Center</title>
+    <!-- CSS TEMPLATE -->
+    <!-- Custom CSS -->
+    <link href="%PUBLIC_URL%/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="%PUBLIC_URL%/assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="%PUBLIC_URL%/dist/css/style.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+      .dataTables_paginate {
+        position: relative;
+        right: 15px;
+        top: 17px;
+      }
+
+      .dataTables_info{
+        position: relative;
+        top : 10px;
+      }
+
+
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -39,5 +62,30 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="%PUBLIC_URL%/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="%PUBLIC_URL%/dist/js/app-style-switcher.js"></script>
+    <script src="%PUBLIC_URL%/dist/js/feather.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="%PUBLIC_URL%/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="%PUBLIC_URL%/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="%PUBLIC_URL%/assets/extra-libs/c3/d3.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/extra-libs/c3/c3.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="%PUBLIC_URL%/dist/js/pages/dashboards/dashboard1.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/moment/min/moment.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="%PUBLIC_URL%/dist/js/pages/calendar/cal-init.js"></script>
   </body>
 </html>
