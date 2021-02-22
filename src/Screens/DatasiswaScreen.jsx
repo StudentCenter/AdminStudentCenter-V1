@@ -61,7 +61,6 @@ function DatasiswaScreen() {
             </>
             rowItem["delete"]=
             <>
-
                     <button type="button" className="show btn btn-danger mr-1" 
                             onClick={e => deleteStudent(e)} id={students[index].id} >
                             <i class="fa fa-trash" aria-hidden="true"></i>
