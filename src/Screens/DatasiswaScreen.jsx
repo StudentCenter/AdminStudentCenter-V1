@@ -9,24 +9,24 @@ import { MDBDataTable } from 'mdbreact';
 function DatasiswaScreen() {
     const [tableStudents, setTableStudent] = useState('')
     const [nama, setNama] = useState('')
-    const [kelas, setKelas] = useState('') 
-    const [nisn, setNisn] = useState('') 
-    const [ttl, setTtl] = useState('') 
-    const [anak_ke, setAnak_ke] = useState('') 
-    const [agama, setAgama] = useState('') 
+    const [kelas, setKelas] = useState('')
+    const [nisn, setNisn] = useState('')
+    const [ttl, setTtl] = useState('')
+    const [anak_ke, setAnak_ke] = useState('')
+    const [agama, setAgama] = useState('')
     const [alamat, setAlamat] = useState('')
-    const [no_hp_siswa, setNo_hp_siswa] = useState('') 
-    const [no_hp_ayah, setNo_hp_ayah] = useState('') 
-    const [nama_ayah, setNama_ayah] = useState('') 
-    const [pekerjaan_ayah, setPekerjaan_ayah] = useState('') 
-    const [no_hp_ibu, setNo_hp_ibu] = useState('') 
-    const [nama_ibu, setNama_ibu] = useState('') 
-    const [foto_siswa, setFoto_siswa] = useState('') 
-    const [pekerjaan_ibu, setPekerjaan_ibu] = useState('') 
-    const [no_hp_wali, setNo_hp_wali] = useState('') 
-    const [nama_wali, setNama_wali] = useState('') 
-    const [pekerjaan_wali, setPekerjaan_wali] = useState('') 
-    const [alamat_wali, setAlamat_wali] = useState('') 
+    const [no_hp_siswa, setNo_hp_siswa] = useState('')
+    const [no_hp_ayah, setNo_hp_ayah] = useState('')
+    const [nama_ayah, setNama_ayah] = useState('')
+    const [pekerjaan_ayah, setPekerjaan_ayah] = useState('')
+    const [no_hp_ibu, setNo_hp_ibu] = useState('')
+    const [nama_ibu, setNama_ibu] = useState('')
+    const [foto_siswa, setFoto_siswa] = useState('')
+    const [pekerjaan_ibu, setPekerjaan_ibu] = useState('')
+    const [no_hp_wali, setNo_hp_wali] = useState('')
+    const [nama_wali, setNama_wali] = useState('')
+    const [pekerjaan_wali, setPekerjaan_wali] = useState('')
+    const [alamat_wali, setAlamat_wali] = useState('')
     const Swal = withReactContent(MySwal)
     const [loading, setLoading] = useState(false)
     const URL_API = `http://localhost:8000`
@@ -34,7 +34,7 @@ function DatasiswaScreen() {
     const [id_siswa, setId_siswa] = useState('')
 
     // for edit
-    const [foto_siswa_edit, setFoto_siswa_edit] = useState('') 
+    const [foto_siswa_edit, setFoto_siswa_edit] = useState('')
 
     // Setting the data table
     const dataTableStudents = students => {
@@ -48,14 +48,14 @@ function DatasiswaScreen() {
             rowItem["nisn"] = students[index].nisn
             rowItem["alamat"] = students[index].alamat
             rowItem["agama"] = students[index].agama
-            rowItem["foto_siswa"] = 
-            <>
-            <img style={{ width: "30px"}} src={ students[index].foto_siswa} alt=""/>
-            </>      
-            rowItem["action"]=
-            <>
-                <button type="button" className="show btn btn-primary" 
-                        onClick={e => getIdStudent(e)} id={students[index].id} 
+            rowItem["foto_siswa"] =
+                <>
+                    <img style={{ width: "30px" }} src={students[index].foto_siswa} alt="" />
+                </>
+            rowItem["action"] =
+                <>
+                    <button type="button" className="show btn btn-primary"
+                        onClick={e => getIdStudent(e)} id={students[index].id}
                         data-toggle="modal" data-target="#editModal">
                 <small className="text-light">details</small></button>
             </>
@@ -64,24 +64,32 @@ function DatasiswaScreen() {
                     <button type="button" className="show btn btn-danger mr-1" 
                             onClick={e => deleteStudent(e)} id={students[index].id} >
                             <i class="fa fa-trash" aria-hidden="true"></i>
+                        <small className="text-light">details</small></button>
+                </>
+            rowItem["delete"] =
+                <>
+
+                    <button type="button" className="show btn btn-danger mr-1"
+                        onClick={e => deleteStudent(e)} id={students[index].id} >
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
 
-                    <button type="button" className="btn btn-success" 
-                            onClick={e => getIdStudent(e)} id={students[index].id}
-                            data-toggle="modal" data-target="#modalEdit">
-                            <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                    <button type="button" className="btn btn-success"
+                        onClick={e => getIdStudent(e)} id={students[index].id}
+                        data-toggle="modal" data-target="#modalEdit">
+                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
                     </button>
-            </>
+                </>
             rowsData.push(rowItem)
         }
         setTableStudent(rowsData)
     }
 
     const fetchStudents = async () => {
-        try{
-            const fetchApiStudents = await fetch(`${URL_API}/student`,{
-                    method : 'GET', 
-            }) 
+        try {
+            const fetchApiStudents = await fetch(`${URL_API}/student`, {
+                method: 'GET',
+            })
             const siswadata = await fetchApiStudents.json()
             dataTableStudents(siswadata.result)
             console.log(siswadata)
@@ -107,12 +115,12 @@ function DatasiswaScreen() {
 
     useEffect(() => {
         fetchStudents()
-        .then(() => {
-            setLoading(true)
-        })
-        .then(() => {
-            fetchKelas()
-        })
+            .then(() => {
+                setLoading(true)
+            })
+            .then(() => {
+                fetchKelas()
+            })
     }, [id_siswa])
 
     // Data job
@@ -164,7 +172,7 @@ function DatasiswaScreen() {
                     field: 'delete',
                     sort: 'asc'
                 },
-                
+
             ],
             rows: data
         }
@@ -243,38 +251,38 @@ function DatasiswaScreen() {
     // Get id Siswa
     const getIdStudent = async e => {
         console.log(e.currentTarget.id)
-            try {
-                const data = await fetch(`${URL_API}/student/get/${e.currentTarget.id}`, {
-                    method: 'GET'
-                })
-                const result = await data.json()
-                setNama(result.data.nama)
-                setId_siswa(result.data.id)
-                setKelas(result.data.kelas[0].id)
-                setNisn(result.data.nisn)
-                setTtl(result.data.ttl)
-                setAgama(result.data.agama)
-                setAnak_ke(result.data.anak_ke)
-                setAlamat(result.data.alamat)
-                setNo_hp_siswa(result.data.no_hp_siswa)
-                setNo_hp_ayah(result.data.no_hp_ayah)
-                setNama_ayah(result.data.nama_ayah)
-                setPekerjaan_ayah(result.data.pekerjaan_ayah)
-                setNo_hp_ibu(result.data.no_hp_ibu)
-                setNama_ibu(result.data.nama_ibu)
-                setPekerjaan_ibu(result.data.pekerjaan_ibu)
-                setNo_hp_wali(result.data.no_hp_wali)
-                setNama_wali(result.data.nama_wali)
-                setPekerjaan_wali(result.data.pekerjaan_wali)
-                setAlamat_wali(result.data.alamat_wali)
-                console.log(result.data)
-            } catch (error) {
-                console.log(error)
-            }
+        try {
+            const data = await fetch(`${URL_API}/student/get/${e.currentTarget.id}`, {
+                method: 'GET'
+            })
+            const result = await data.json()
+            setNama(result.data.nama)
+            setId_siswa(result.data.id)
+            setKelas(result.data.kelas[0].id)
+            setNisn(result.data.nisn)
+            setTtl(result.data.ttl)
+            setAgama(result.data.agama)
+            setAnak_ke(result.data.anak_ke)
+            setAlamat(result.data.alamat)
+            setNo_hp_siswa(result.data.no_hp_siswa)
+            setNo_hp_ayah(result.data.no_hp_ayah)
+            setNama_ayah(result.data.nama_ayah)
+            setPekerjaan_ayah(result.data.pekerjaan_ayah)
+            setNo_hp_ibu(result.data.no_hp_ibu)
+            setNama_ibu(result.data.nama_ibu)
+            setPekerjaan_ibu(result.data.pekerjaan_ibu)
+            setNo_hp_wali(result.data.no_hp_wali)
+            setNama_wali(result.data.nama_wali)
+            setPekerjaan_wali(result.data.pekerjaan_wali)
+            setAlamat_wali(result.data.alamat_wali)
+            console.log(result.data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-     // handle submit edit siswa
-     const handleEdit = async e => {
+    // handle submit edit siswa
+    const handleEdit = async e => {
         e.preventDefault();
         let formData = new FormData(e.target)
         try {
@@ -343,8 +351,8 @@ function DatasiswaScreen() {
         }
     }
 
-     // Delete job
-     const deleteStudent = (e) => {
+    // Delete job
+    const deleteStudent = (e) => {
         const id = e.currentTarget.id
         console.log(id)
         Swal.fire({
@@ -390,45 +398,45 @@ function DatasiswaScreen() {
 
     if (loading) {
         Swal.close()
-        return(
+        return (
             <>
                 <div className="page-breadcrumb">
                     <div className="row">
-                    <div className="col-11 align-self-center">
-                        <h4 className="page-title text-truncate text-dark font-weight-medium mb-1">Data Siswa</h4>
-                        <div className="d-flex align-items-center">
-                        <nav aria-label="breadcrumb">
-                            <ol className="breadcrumb m-0 p-0">
-                            <li className="breadcrumb-item"><a href="index.html" className="text-muted">Apps</a></li>
-                            <li className="breadcrumb-item text-muted active" aria-current="page">Ticket List</li>
-                            </ol>
-                        </nav>
+                        <div className="col-11 align-self-center">
+                            <h4 className="page-title text-truncate text-dark font-weight-medium mb-1">Data Siswa</h4>
+                            <div className="d-flex align-items-center">
+                                <nav aria-label="breadcrumb">
+                                    <ol className="breadcrumb m-0 p-0">
+                                        <li className="breadcrumb-item"><a href="index.html" className="text-muted">Apps</a></li>
+                                        <li className="breadcrumb-item text-muted active" aria-current="page">Ticket List</li>
+                                    </ol>
+                                </nav>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-1 align-self-center">
-                        <div className="customize-input float-right">
-                        <div className="dropdown no-arrow">
+                        <div className="col-1 align-self-center">
+                            <div className="customize-input float-right">
+                                <div className="dropdown no-arrow">
                                     <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400" />
                                     </a>
                                     <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                         <div className="dropdown-header">Action:</div>
                                         <a className="dropdown-item" href="#" data-toggle="modal" data-target="#addModal">
-                                            <i className="mdi mdi-plus" style={{ marginRight: "10px", color: "green" }} />
+                                            <i className="fas fa-plus" style={{ marginRight: "10px", color: "green" }} />
                                             Tambah Siswa
                                         </a>
                                         <a className="dropdown-item" href="#" data-toggle="modal" data-target="#addModal">
-                                            <i className="mdi mdi-plus" style={{ marginRight: "10px", color: "green" }} />
+                                            <i className="fas fa-file-pdf" style={{ marginRight: "10px", color: "blue" }} />
                                             PDF
                                         </a>
                                         <a className="dropdown-item" href="#" data-toggle="modal" data-target="#addModal">
-                                            <i className="mdi mdi-plus" style={{ marginRight: "10px", color: "green" }} />
+                                            <i className="fas fa-file-excel" style={{ marginRight: "10px", color: "greenyellow" }} />
                                             Excel
                                         </a>
                                     </div>
                                 </div>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 {/* ============================================================== */}
@@ -443,76 +451,76 @@ function DatasiswaScreen() {
                     {/* ============================================================== */}
                     {/* basic table */}
                     <div className="row">
-                    <div className="col-12">
-                        <div className="card">
-                        <div className="card-body">
-                            <div className="row">
-                            {/* Column */}
-                            <div className="col-md-6 col-lg-3 col-xlg-3">
-                                <div className="card card-hover">
-                                <div className="p-2 bg-primary text-center">
-                                    <h1 className="font-light text-white">2,064</h1>
-                                    <h6 className="text-white">Total Tickets</h6>
-                                </div>
-                                </div>
-                            </div>
-                            {/* Column */}
-                            <div className="col-md-6 col-lg-3 col-xlg-3">
-                                <div className="card card-hover">
-                                <div className="p-2 bg-cyan text-center">
-                                    <h1 className="font-light text-white">1,738</h1>
-                                    <h6 className="text-white">Responded</h6>
-                                </div>
-                                </div>
-                            </div>
-                            {/* Column */}
-                            <div className="col-md-6 col-lg-3 col-xlg-3">
-                                <div className="card card-hover">
-                                <div className="p-2 bg-success text-center">
-                                    <h1 className="font-light text-white">1100</h1>
-                                    <h6 className="text-white">Resolve</h6>
-                                </div>
-                                </div>
-                            </div>
-                            {/* Column */}
-                            <div className="col-md-6 col-lg-3 col-xlg-3">
-                                <div className="card card-hover">
-                                <div className="p-2 bg-danger text-center">
-                                    <h1 className="font-light text-white">964</h1>
-                                    <h6 className="text-white">Pending</h6>
-                                </div>
-                                </div>
-                            </div>
-                            {/* Column */}
-                            </div>
-                            <div>
-                                {tableStudents ? 
-                                    <MDBDataTable
-                                            style={{ color: "black"}}
-                                            sortable={false}
-                                            striped
-                                            noBottomColumns={true}
-                                            data={dataStudents(tableStudents)}
-                                            responsive={true}
-                                    />
-                                    :
-                                    <div>
-                                        <h1>
-                                            No Data!
-                                        </h1>
+                        <div className="col-12">
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="row">
+                                        {/* Column */}
+                                        <div className="col-md-6 col-lg-3 col-xlg-3">
+                                            <div className="card card-hover">
+                                                <div className="p-2 bg-primary text-center" style={{ borderRadius: 10 }}>
+                                                    <h1 className="font-light text-white">2,064</h1>
+                                                    <h6 className="text-white">Total Tickets</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Column */}
+                                        <div className="col-md-6 col-lg-3 col-xlg-3">
+                                            <div className="card card-hover">
+                                                <div className="p-2 bg-cyan text-center" style={{ borderRadius: 10 }}>
+                                                    <h1 className="font-light text-white">1,738</h1>
+                                                    <h6 className="text-white">Responded</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Column */}
+                                        <div className="col-md-6 col-lg-3 col-xlg-3">
+                                            <div className="card card-hover">
+                                                <div className="p-2 bg-success text-center" style={{ borderRadius: 10 }}>
+                                                    <h1 className="font-light text-white">1100</h1>
+                                                    <h6 className="text-white">Resolve</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Column */}
+                                        <div className="col-md-6 col-lg-3 col-xlg-3">
+                                            <div className="card card-hover">
+                                                <div className="p-2 bg-danger text-center" style={{ borderRadius: 10 }}>
+                                                    <h1 className="font-light text-white">964</h1>
+                                                    <h6 className="text-white">Pending</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Column */}
                                     </div>
-                                }
+                                    <div>
+                                        {tableStudents ?
+                                            <MDBDataTable
+                                                style={{ color: "black" }}
+                                                sortable={false}
+                                                striped
+                                                noBottomColumns={true}
+                                                data={dataStudents(tableStudents)}
+                                                responsive={true}
+                                            />
+                                            :
+                                            <div>
+                                                <h1>
+                                                    No Data!
+                                        </h1>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
 
-                 {/* <!-- Add Modal --> */}
-                 <div className="modal fade" id="addModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                {/* <!-- Add Modal --> */}
+                <div className="modal fade" id="addModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
-                        <div className="modal-content">
+                        <div className="modal-content" style={{ borderRadius: 10 }}>
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Add Modal</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -537,8 +545,8 @@ function DatasiswaScreen() {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput2">Kelas</label>
-                                        <select 
-                                            className="form-control" 
+                                        <select
+                                            className="form-control"
                                             id="exampleFormControlSelect1"
                                             value={kelas}
                                             name="kelas"
@@ -547,14 +555,14 @@ function DatasiswaScreen() {
                                         >
                                             <option selected>Pilih Kelas</option>
                                             {datakelas ?
-                                            datakelas.map((item) => {
-                                                return(
-                                                    <>
-                                                    <option key={item.id} value={item.id}>{item.kelas}</option>
-                                                    </>
-                                                )
-                                            })
-                                            :
+                                                datakelas.map((item) => {
+                                                    return (
+                                                        <>
+                                                            <option key={item.id} value={item.id}>{item.kelas}</option>
+                                                        </>
+                                                    )
+                                                })
+                                                :
                                                 <option>Tidak Ada Data Kelas</option>
                                             }
                                         </select>
@@ -803,10 +811,10 @@ function DatasiswaScreen() {
                     </div>
                 </div>
 
-                   {/* <!-- Detail Modal --> */}
-                   <div className="modal fade" id="editModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                {/* <!-- Detail Modal --> */}
+                <div className="modal fade" id="editModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
-                        <div className="modal-content">
+                        <div className="modal-content" style={{ borderRadius: 10 }}>
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Detail Siswa</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -937,87 +945,87 @@ function DatasiswaScreen() {
                                         <label htmlFor="exampleFormControlInput4">No Hp Wali</label>
                                         {no_hp_wali ?
                                             <input
-                                            type="text"
-                                            className="form-control text-dark"
-                                            id="exampleFormControlInput4"
-                                            placeholder="-"
-                                            value={no_hp_wali}
-                                            name="joblink"
-                                            style={{ color: "white" }}
-                                            readOnly
-                                        />
-                                        :
+                                                type="text"
+                                                className="form-control text-dark"
+                                                id="exampleFormControlInput4"
+                                                placeholder="-"
+                                                value={no_hp_wali}
+                                                name="joblink"
+                                                style={{ color: "white" }}
+                                                readOnly
+                                            />
+                                            :
                                             <input
-                                            type="text"
-                                            className="form-control text-dark"
-                                            id="exampleFormControlInput4"
-                                            placeholder="-"
-                                            value="-"
-                                            name="joblink"
-                                            style={{ color: "white" }}
-                                            readOnly
-                                        />
+                                                type="text"
+                                                className="form-control text-dark"
+                                                id="exampleFormControlInput4"
+                                                placeholder="-"
+                                                value="-"
+                                                name="joblink"
+                                                style={{ color: "white" }}
+                                                readOnly
+                                            />
                                         }
-                                        
+
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput4">Nama Wali</label>
-                                        { nama_wali ?
+                                        {nama_wali ?
                                             <input
-                                            type="text"
-                                            className="form-control text-dark"
-                                            id="exampleFormControlInput4"
-                                            placeholder="-"
-                                            value={nama_wali}
-                                            name="joblink"
-                                            style={{ color: "white" }}
-                                            readOnly
-                                        />
+                                                type="text"
+                                                className="form-control text-dark"
+                                                id="exampleFormControlInput4"
+                                                placeholder="-"
+                                                value={nama_wali}
+                                                name="joblink"
+                                                style={{ color: "white" }}
+                                                readOnly
+                                            />
                                             :
                                             <input
-                                            type="text"
-                                            className="form-control text-dark"
-                                            id="exampleFormControlInput4"
-                                            placeholder="-"
-                                            value="-"
-                                            name="joblink"
-                                            style={{ color: "white" }}
-                                            readOnly
-                                        />
+                                                type="text"
+                                                className="form-control text-dark"
+                                                id="exampleFormControlInput4"
+                                                placeholder="-"
+                                                value="-"
+                                                name="joblink"
+                                                style={{ color: "white" }}
+                                                readOnly
+                                            />
                                         }
-                                        
+
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput4">Pekerjaan Wali</label>
                                         {pekerjaan_wali ?
                                             <input
-                                            type="text"
-                                            className="form-control text-dark"
-                                            id="exampleFormControlInput4"
-                                            placeholder="-"
-                                            value={pekerjaan_wali}
-                                            name="joblink"
-                                            style={{ color: "white" }}
-                                            readOnly
-                                          />
-                                            :          
+                                                type="text"
+                                                className="form-control text-dark"
+                                                id="exampleFormControlInput4"
+                                                placeholder="-"
+                                                value={pekerjaan_wali}
+                                                name="joblink"
+                                                style={{ color: "white" }}
+                                                readOnly
+                                            />
+                                            :
                                             <input
-                                            type="text"
-                                            className="form-control text-dark"
-                                            id="exampleFormControlInput4"
-                                            placeholder="-"
-                                            value="-"
-                                            name="joblink"
-                                            style={{ color: "white" }}
-                                            readOnly
-                                           />
+                                                type="text"
+                                                className="form-control text-dark"
+                                                id="exampleFormControlInput4"
+                                                placeholder="-"
+                                                value="-"
+                                                name="joblink"
+                                                style={{ color: "white" }}
+                                                readOnly
+                                            />
                                         }
-                                      
-                                   
+
+
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput4">Alamat Wali</label>
-                                        {alamat_wali ? 
+                                        {alamat_wali ?
                                             <input
                                                 type="text"
                                                 className="form-control text-dark"
@@ -1028,7 +1036,7 @@ function DatasiswaScreen() {
                                                 style={{ color: "white" }}
                                                 readOnly
                                             />
-                                        :
+                                            :
                                             <input
                                                 type="text"
                                                 className="form-control text-dark"
@@ -1040,7 +1048,7 @@ function DatasiswaScreen() {
                                                 readOnly
                                             />
                                         }
-                                        
+
                                     </div>
                                 </div>
                                 <div className="modal-footer">
@@ -1080,8 +1088,8 @@ function DatasiswaScreen() {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput2">Kelas</label>
-                                        <select 
-                                            className="form-control" 
+                                        <select
+                                            className="form-control"
                                             id="exampleFormControlSelect1"
                                             value={kelas}
                                             name="kelas"
@@ -1090,14 +1098,14 @@ function DatasiswaScreen() {
                                         >
                                             <option selected>Pilih Kelas</option>
                                             {datakelas ?
-                                            datakelas.map((item) => {
-                                                return(
-                                                    <>
-                                                    <option key={item.id} value={item.id} >{item.kelas}</option>
-                                                    </>
-                                                )
-                                            })
-                                            :
+                                                datakelas.map((item) => {
+                                                    return (
+                                                        <>
+                                                            <option key={item.id} value={item.id} >{item.kelas}</option>
+                                                        </>
+                                                    )
+                                                })
+                                                :
                                                 <option>Tidak Ada Data Kelas</option>
                                             }
                                         </select>
