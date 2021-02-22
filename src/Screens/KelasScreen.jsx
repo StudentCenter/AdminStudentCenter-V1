@@ -1,6 +1,6 @@
 import React, {
-       useState,
-       useEffect
+    useState,
+    useEffect
 } from 'react';
 import MySwal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -23,28 +23,28 @@ function KelasScreen() {
             let rowItem = {}
             rowItem["no"] = index + 1
             rowItem['kelas'] = kelas[index].kelas
-            rowItem["delete"]=
-            <>
-                   <button type="button" className="show btn btn-danger mr-1" 
-                            onClick={e => deleteKelas(e)} id={kelas[index].id} >
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+            rowItem["delete"] =
+                <>
+                    <button type="button" className="show btn btn-danger mr-1"
+                        onClick={e => deleteKelas(e)} id={kelas[index].id} style={{ borderRadius: 5 }}>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
-                    <button type="button" className="btn btn-success" 
-                            onClick={e => getIdKelas(e)} id={kelas[index].id}
-                            data-toggle="modal" data-target="#modalEdit">
-                            <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                    <button type="button" className="btn btn-success"
+                        onClick={e => getIdKelas(e)} id={kelas[index].id}
+                        data-toggle="modal" data-target="#modalEdit" style={{ borderRadius: 5 }}>
+                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
                     </button>
-            </>
+                </>
             rowsData.push(rowItem)
         }
         setTableKelas(rowsData)
     }
 
     const fetchKelas = async () => {
-        try{
-            const fetchApiStudents = await fetch(`${URL_API}/kelas`,{
-                    method : 'GET', 
-            }) 
+        try {
+            const fetchApiStudents = await fetch(`${URL_API}/kelas`, {
+                method: 'GET',
+            })
             const siswadata = await fetchApiStudents.json()
             dataTableKelas(siswadata.result)
             setTablesKelas(siswadata.result)
@@ -57,12 +57,12 @@ function KelasScreen() {
 
     useEffect(() => {
         fetchKelas()
-        .then(() => {
-            setLoading(true)
-        })
-        .then(() => {
-            fetchKelas()
-        })
+            .then(() => {
+                setLoading(true)
+            })
+            .then(() => {
+                fetchKelas()
+            })
     }, [id_kelas])
 
     // Data kelas
@@ -84,15 +84,15 @@ function KelasScreen() {
                     field: 'delete',
                     sort: 'asc'
                 },
-                
+
             ],
             rows: data
         }
     }
 
 
-     // Handle Add data Kelas
-     const handleSubmit = async e => {
+    // Handle Add data Kelas
+    const handleSubmit = async e => {
         e.preventDefault();
         let formData = new FormData(e.target)
         try {
@@ -146,21 +146,21 @@ function KelasScreen() {
     // Get id Siswa
     const getIdKelas = async e => {
         console.log(e.currentTarget.id)
-            try {
-                const data = await fetch(`${URL_API}/kelas/get/${e.currentTarget.id}`, {
-                    method: 'GET'
-                })
-                const resp = await data.json()
-                console.log(resp)
-                setId_kelas(resp.data.id)
-                setkelas(resp.data.kelas)
-            } catch (error) {
-                console.log(error)
-            }
+        try {
+            const data = await fetch(`${URL_API}/kelas/get/${e.currentTarget.id}`, {
+                method: 'GET'
+            })
+            const resp = await data.json()
+            console.log(resp)
+            setId_kelas(resp.data.id)
+            setkelas(resp.data.kelas)
+        } catch (error) {
+            console.log(error)
         }
+    }
 
-        // handle submit edit siswa
-     const handleEdit = async e => {
+    // handle submit edit siswa
+    const handleEdit = async e => {
         e.preventDefault();
         try {
             const fetchApi = await fetch(`${URL_API}/kelas/update/${id_kelas}`, {
@@ -212,9 +212,9 @@ function KelasScreen() {
             console.log(error)
         }
     }
-   
-     // Delete kelas
-     const deleteKelas = (e) => {
+
+    // Delete kelas
+    const deleteKelas = (e) => {
         const id = e.currentTarget.id
         console.log(id)
         Swal.fire({
@@ -258,24 +258,24 @@ function KelasScreen() {
 
     if (loading) {
         Swal.close()
-        return(
+        return (
             <>
                 <div className="page-breadcrumb">
                     <div className="row">
-                    <div className="col-11 align-self-center">
-                        <h4 className="page-title text-truncate text-dark font-weight-medium mb-1">Data Siswa</h4>
-                        <div className="d-flex align-items-center">
-                        <nav aria-label="breadcrumb">
-                            <ol className="breadcrumb m-0 p-0">
-                            <li className="breadcrumb-item"><a href="index.html" className="text-muted">Apps</a></li>
-                            <li className="breadcrumb-item text-muted active" aria-current="page">Ticket List</li>
-                            </ol>
-                        </nav>
+                        <div className="col-11 align-self-center">
+                            <h4 className="page-title text-truncate text-dark font-weight-medium mb-1">Data Siswa</h4>
+                            <div className="d-flex align-items-center">
+                                <nav aria-label="breadcrumb">
+                                    <ol className="breadcrumb m-0 p-0">
+                                        <li className="breadcrumb-item"><a href="index.html" className="text-muted">Apps</a></li>
+                                        <li className="breadcrumb-item text-muted active" aria-current="page">Ticket List</li>
+                                    </ol>
+                                </nav>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-1 align-self-center">
-                        <div className="customize-input float-right">
-                        <div className="dropdown no-arrow">
+                        <div className="col-1 align-self-center">
+                            <div className="customize-input float-right">
+                                <div className="dropdown no-arrow">
                                     <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400" />
                                     </a>
@@ -295,8 +295,8 @@ function KelasScreen() {
                                         </a>
                                     </div>
                                 </div>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 {/* ============================================================== */}
@@ -311,70 +311,70 @@ function KelasScreen() {
                     {/* ============================================================== */}
                     {/* basic table */}
                     <div className="row">
-                    <div className="col-12">
-                        <div className="card">
-                        <div className="card-body">
-                            <div className="row">
-                            {/* Column */}
-                            <div className="col-md-6 col-lg-3 col-xlg-3">
-                                <div className="card card-hover">
-                                <div className="p-2 bg-primary text-center">
-                                    <h1 className="font-light text-white">2,064</h1>
-                                    <h6 className="text-white">Total Tickets</h6>
-                                </div>
-                                </div>
-                            </div>
-                            {/* Column */}
-                            <div className="col-md-6 col-lg-3 col-xlg-3">
-                                <div className="card card-hover">
-                                <div className="p-2 bg-cyan text-center">
-                                    <h1 className="font-light text-white">1,738</h1>
-                                    <h6 className="text-white">Responded</h6>
-                                </div>
-                                </div>
-                            </div>
-                            {/* Column */}
-                            <div className="col-md-6 col-lg-3 col-xlg-3">
-                                <div className="card card-hover">
-                                <div className="p-2 bg-success text-center">
-                                    <h1 className="font-light text-white">1100</h1>
-                                    <h6 className="text-white">Resolve</h6>
-                                </div>
-                                </div>
-                            </div>
-                            {/* Column */}
-                            <div className="col-md-6 col-lg-3 col-xlg-3">
-                                <div className="card card-hover">
-                                <div className="p-2 bg-danger text-center">
-                                    <h1 className="font-light text-white">964</h1>
-                                    <h6 className="text-white">Pending</h6>
-                                </div>
-                                </div>
-                            </div>
-                            {/* Column */}
-                            </div>
-                            <div>
-                                {tableKelas ? 
-                                    <MDBDataTable
-                                            style={{ color: "black"}}
-                                            sortable={false}
-                                            striped
-                                            noBottomColumns={true}
-                                            data={dataKelas(tableKelas)}
-                                            responsive={true}
-                                    />
-                                    :
-                                    <div>
-                                        <h1>
-                                            No Data!
-                                        </h1>
+                        <div className="col-12">
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="row">
+                                        {/* Column */}
+                                        <div className="col-md-6 col-lg-3 col-xlg-3">
+                                            <div className="card card-hover">
+                                                <div className="p-2 bg-primary text-center" style={{ borderRadius: 10 }}>
+                                                    <h1 className="font-light text-white">2,064</h1>
+                                                    <h6 className="text-white">Total Tickets</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Column */}
+                                        <div className="col-md-6 col-lg-3 col-xlg-3">
+                                            <div className="card card-hover">
+                                                <div className="p-2 bg-cyan text-center" style={{ borderRadius: 10 }}>
+                                                    <h1 className="font-light text-white">1,738</h1>
+                                                    <h6 className="text-white">Responded</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Column */}
+                                        <div className="col-md-6 col-lg-3 col-xlg-3">
+                                            <div className="card card-hover">
+                                                <div className="p-2 bg-success text-center" style={{ borderRadius: 10 }}>
+                                                    <h1 className="font-light text-white">1100</h1>
+                                                    <h6 className="text-white">Resolve</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Column */}
+                                        <div className="col-md-6 col-lg-3 col-xlg-3">
+                                            <div className="card card-hover">
+                                                <div className="p-2 bg-danger text-center" style={{ borderRadius: 10 }}>
+                                                    <h1 className="font-light text-white">964</h1>
+                                                    <h6 className="text-white">Pending</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Column */}
                                     </div>
-                                }
+                                    <div>
+                                        {tableKelas ?
+                                            <MDBDataTable
+                                                style={{ color: "black" }}
+                                                sortable={false}
+                                                striped
+                                                noBottomColumns={true}
+                                                data={dataKelas(tableKelas)}
+                                                responsive={true}
+                                            />
+                                            :
+                                            <div>
+                                                <h1>
+                                                    No Data!
+                                        </h1>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
-                </div>
                 </div>
 
                 {/* <!-- Add Modal --> */}
@@ -414,8 +414,8 @@ function KelasScreen() {
                 </div>
 
 
-                  {/* <!-- Edit Modal --> */}
-                  <div className="modal fade" id="modalEdit" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                {/* <!-- Edit Modal --> */}
+                <div className="modal fade" id="modalEdit" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -428,7 +428,7 @@ function KelasScreen() {
                                 <div className="modal-body">
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput2">Kelas</label>
-                                       
+
                                         <input
                                             type="text"
                                             className="form-control text-dark"
