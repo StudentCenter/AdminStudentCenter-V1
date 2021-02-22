@@ -57,6 +57,13 @@ function DatasiswaScreen() {
                     <button type="button" className="show btn btn-primary"
                         onClick={e => getIdStudent(e)} id={students[index].id}
                         data-toggle="modal" data-target="#editModal">
+                <small className="text-light">details</small></button>
+            </>
+            rowItem["delete"]=
+            <>
+                    <button type="button" className="show btn btn-danger mr-1" 
+                            onClick={e => deleteStudent(e)} id={students[index].id} >
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         <small className="text-light">details</small></button>
                 </>
             rowItem["delete"] =
