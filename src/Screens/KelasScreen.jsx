@@ -552,7 +552,7 @@ function KelasScreen() {
                     <div className="modal-dialog">
                         <div className="modal-content" style={{
                             borderTopLeftRadius: 40,
-                            width: '1600px',
+                            width: '330%',
                             marginLeft: '-537px',
                             height: '1000px'
                         }}>
