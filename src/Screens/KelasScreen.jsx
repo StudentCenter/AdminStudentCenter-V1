@@ -11,7 +11,6 @@ function KelasScreen() {
     const Swal = withReactContent(MySwal)
     const [loading, setLoading] = useState(false)
     const [kelas, setkelas] = useState('')
-    const [tablesKelas, setTablesKelas] = useState('')
     const URL_API = `http://localhost:8000`
     const [id_kelas, setId_kelas] = useState('')
 
@@ -23,11 +22,18 @@ function KelasScreen() {
             let rowItem = {}
             rowItem["no"] = index + 1
             rowItem['kelas'] = kelas[index].kelas
-            rowItem["delete"] =
-                <>
-                    <button type="button" className="show btn btn-danger mr-1"
-                        onClick={e => deleteKelas(e)} id={kelas[index].id} style={{ borderRadius: 5 }}>
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+            rowItem['totalsiswa'] = kelas[index].siswa_data.length
+            rowItem['detailsiswa'] = 
+            <>
+                     <button type="button" className="show btn btn-primary" 
+                        data-toggle="modal" data-target="#detailModal">
+                    <small className="text-light">details</small></button>
+            </>
+            rowItem["delete"]=
+            <>
+                   <button type="button" className="show btn btn-danger mr-1" 
+                            onClick={e => deleteKelas(e)} id={kelas[index].id} >
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                     <button type="button" className="btn btn-success"
                         onClick={e => getIdKelas(e)} id={kelas[index].id}
@@ -39,7 +45,7 @@ function KelasScreen() {
         }
         setTableKelas(rowsData)
     }
-
+    
     const fetchKelas = async () => {
         try {
             const fetchApiStudents = await fetch(`${URL_API}/kelas`, {
@@ -47,7 +53,6 @@ function KelasScreen() {
             })
             const siswadata = await fetchApiStudents.json()
             dataTableKelas(siswadata.result)
-            setTablesKelas(siswadata.result)
             console.log(siswadata)
         } catch (error) {
             console.log(error)
@@ -57,12 +62,9 @@ function KelasScreen() {
 
     useEffect(() => {
         fetchKelas()
-            .then(() => {
-                setLoading(true)
-            })
-            .then(() => {
-                fetchKelas()
-            })
+        .then(() => {
+            setLoading(true)
+        })
     }, [id_kelas])
 
     // Data kelas
@@ -77,6 +79,16 @@ function KelasScreen() {
                 {
                     label: 'Kelas',
                     field: 'kelas',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Total Siswa',
+                    field: 'totalsiswa',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Detail Data',
+                    field: 'detailsiswa',
                     sort: 'asc'
                 },
                 {
@@ -447,6 +459,55 @@ function KelasScreen() {
                                     <button type="submit" className="btn btn-success" >Edit Data</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+
+                {/* <!-- Detail Modal --> */}
+                <div className="modal fade" id="detailModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" style={{ color: "black", marginRight: "10px" }}>×</span>
+                                </button>
+                    <div className="modal-dialog">
+                        <div className="modal-content" style={{
+                            borderTopRightRadius: 50,
+                            borderTopLeftRadius: 50,
+                            width: '273%', 
+                            marginLeft: '-85%',
+                            paddingBottom: '52%',
+                        }}>
+                            <div className="container">
+                            <table className="table table-striped mt-5 mb-5">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                            </div>
                         </div>
                     </div>
                 </div>
