@@ -276,12 +276,12 @@ function KelasScreen() {
                 <div className="page-breadcrumb">
                     <div className="row">
                         <div className="col-11 align-self-center">
-                            <h4 className="page-title text-truncate text-dark font-weight-medium mb-1">Data Siswa</h4>
+                            <h4 className="page-title text-truncate text-dark font-weight-medium mb-1">Data Kelas</h4>
                             <div className="d-flex align-items-center">
                                 <nav aria-label="breadcrumb">
                                     <ol className="breadcrumb m-0 p-0">
-                                        <li className="breadcrumb-item"><a href="index.html" className="text-muted">Apps</a></li>
-                                        <li className="breadcrumb-item text-muted active" aria-current="page">Ticket List</li>
+                                        <li className="breadcrumb-item"><a href="/" className="text-muted">Home</a></li>
+                                        <li className="breadcrumb-item text-muted active" aria-current="page">Data Kelas</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -471,11 +471,10 @@ function KelasScreen() {
                     </button>
                     <div className="modal-dialog">
                         <div className="modal-content" style={{
-                            // borderTopRightRadius: 50,
-                            borderTopLeftRadius: 50,
-                            width: '273%',
-                            marginLeft: '-85%',
-                            paddingBottom: '60%',
+                            borderTopLeftRadius: 40,
+                            width: '1600px',
+                            marginLeft: '-537px',
+                            height: '1000px'
                         }}>
                             <div className="container">
                                 <table className="table table-striped"
@@ -513,85 +512,6 @@ function KelasScreen() {
                                         </tr>
                                     </tbody>
                                 </table>
-                    <div className="modal fade" id="detailModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" style={{ color: "black", marginRight: "10px" }}>×</span>
-                        </button>
-                        <div className="modal-dialog">
-                            <div className="modal-content" style={{
-                                // borderTopRightRadius: 50,
-                                borderTopLeftRadius: 50,
-                                width: '273%',
-                                marginLeft: '-85%',
-                                paddingBottom: '60%',
-                            }}>
-                                <div className="container">
-                                    <table className="table table-striped"
-                                        style={{
-                                            marginTop: '11%',
-                                        }}
-                                    >
-
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">First</th>
-                                                <th scope="col">Last</th>
-                                                <th scope="col">Handle</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <table className="table table-striped mt-5 mb-5">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">First</th>
-                                                <th scope="col">Last</th>
-                                                <th scope="col">Handle</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                         </div>
                     </div>
