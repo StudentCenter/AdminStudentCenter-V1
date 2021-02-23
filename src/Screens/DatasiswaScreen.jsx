@@ -32,6 +32,7 @@ function DatasiswaScreen() {
     const URL_API = `http://localhost:8000`
     const [datakelas, setDataKelas] = useState('')
     const [id_siswa, setId_siswa] = useState('')
+    const [imagesiswa, setImageSiswa] = useState('')
 
     // for edit
     const [foto_siswa_edit, setFoto_siswa_edit] = useState('')
@@ -56,14 +57,7 @@ function DatasiswaScreen() {
                 <>
                     <button type="button" className="show btn btn-primary"
                         onClick={e => getIdStudent(e)} id={students[index].id}
-                        data-toggle="modal" data-target="#editModal">
-                        <small className="text-light">details</small></button>
-                </>
-            rowItem["delete"] =
-                <>
-                    <button type="button" className="show btn btn-danger mr-1"
-                        onClick={e => deleteStudent(e)} id={students[index].id} style={{ borderRadius: 10 }}>
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        data-toggle="modal" data-target="#editModal" style={{ borderRadius: 5 }}>
                         <small className="text-light">details</small></button>
                 </>
             rowItem["delete"] =
@@ -192,7 +186,7 @@ function DatasiswaScreen() {
             if (create.success) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Succes Add Data Job',
+                    title: 'Succes Add Data Student',
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
@@ -275,6 +269,7 @@ function DatasiswaScreen() {
             setNama_wali(result.data.nama_wali)
             setPekerjaan_wali(result.data.pekerjaan_wali)
             setAlamat_wali(result.data.alamat_wali)
+            setImageSiswa(result.data.foto_siswa)
             console.log(result.data)
         } catch (error) {
             console.log(error)
@@ -295,7 +290,7 @@ function DatasiswaScreen() {
             if (create.success) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Succes Edit Data Product',
+                    title: 'Succes Edit Data Student',
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
@@ -367,7 +362,7 @@ function DatasiswaScreen() {
             if (result.isConfirmed) {
                 Swal.fire(
                     'Deleted!',
-                    'Data job has been deleted.',
+                    'Data Student has been deleted.',
                     'success'
                 ).then(async () => {
                     try {
@@ -407,8 +402,8 @@ function DatasiswaScreen() {
                             <div className="d-flex align-items-center">
                                 <nav aria-label="breadcrumb">
                                     <ol className="breadcrumb m-0 p-0">
-                                        <li className="breadcrumb-item"><a href="index.html" className="text-muted">Apps</a></li>
-                                        <li className="breadcrumb-item text-muted active" aria-current="page">Ticket List</li>
+                                        <li className="breadcrumb-item"><a href="/" className="text-muted">Home</a></li>
+                                        <li className="breadcrumb-item text-muted active" aria-current="page">Student Data</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -823,6 +818,12 @@ function DatasiswaScreen() {
                             </div>
                             <form >
                                 <div className="modal-body">
+                                    <div>
+                                        <img src={imagesiswa} alt="foto_siswa" width='100%' style={{
+                                            marginBottom: '5%',
+                                            borderRadius: 10
+                                        }} />
+                                    </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">No Hp Siswa
                                         </label>

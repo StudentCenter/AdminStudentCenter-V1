@@ -28,7 +28,7 @@ function KelasScreen() {
             rowItem['detailsiswa'] =
                 <>
                     <button type="button" className="show btn btn-primary"
-                        data-toggle="modal" data-target="#detailModal" onClick={e => getSiswaId(e)} id={kelas[index].id} >
+                        data-toggle="modal" data-target="#detailModal" onClick={e => getSiswaId(e)} id={kelas[index].id} style={{ borderRadius: 5 }} >
                         <small className="text-light">details</small></button>
                 </>
             rowItem["delete"] =
