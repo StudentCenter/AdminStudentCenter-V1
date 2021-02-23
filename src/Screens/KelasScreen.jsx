@@ -8,12 +8,13 @@ import { MDBDataTable } from 'mdbreact';
 
 function KelasScreen() {
     const [tableKelas, setTableKelas] = useState('')
+    const [tableSiswa, setTableSiswa] = useState('')
     const Swal = withReactContent(MySwal)
     const [loading, setLoading] = useState(false)
     const [kelas, setkelas] = useState('')
     const URL_API = `http://localhost:8000`
     const [id_kelas, setId_kelas] = useState('')
-    const [nama, setNama] = useState('')
+    const [titleKelas, setTitleKelas] = useState('')
 
     // Setting the data table
     const dataTableKelas = kelas => {
@@ -27,7 +28,7 @@ function KelasScreen() {
             rowItem['detailsiswa'] =
                 <>
                     <button type="button" className="show btn btn-primary"
-                        data-toggle="modal" data-target="#detailModal">
+                        data-toggle="modal" data-target="#detailModal" onClick={e => getSiswaId(e)} id={kelas[index].id} >
                         <small className="text-light">details</small></button>
                 </>
             rowItem["delete"] =
@@ -269,6 +270,85 @@ function KelasScreen() {
         })
     }
 
+    // get siswa per id kelas
+    const getSiswaId = async e => {
+        try {
+            const data = await fetch(`${URL_API}/kelas/getsiswa/${e.currentTarget.id}`, {
+                method: 'GET'
+            })
+            const result = await data.json()
+            console.log(result)
+            const title = result.result[0]
+            setTitleKelas(title.kelas[0].kelas)
+            dataTableSiswa(result.result)
+        } catch (error) {
+            console.log(error)
+            alert(error)
+        }
+    }
+
+    // Setting the data table
+    const dataTableSiswa = siswa => {
+        let rowsData = []
+
+        for (var index = 0; index < siswa.length; index++) {
+            let rowItem = {}
+            rowItem["no"] = index + 1
+            rowItem['namasiswa'] = siswa[index].nama
+            rowItem['kelassiswa'] = siswa[index].kelas[0].kelas
+            rowItem['agamasiswa'] = siswa[index].agama
+            rowItem['alamat'] = siswa[index].alamat
+            rowItem['detailsiswa'] =
+                <>
+                    <button type="button" className="show btn btn-primary"
+                        data-toggle="modal" data-target="#detailModal" onClick={e => getSiswaId(e)} id={siswa[index].id} >
+                        <small className="text-light">details</small></button>
+                </>
+            rowsData.push(rowItem)
+        }
+        setTableSiswa(rowsData)
+    }
+
+    // Data siswa
+    const dataSiswa = (data) => {
+        return {
+            columns: [
+                {
+                    label: 'No',
+                    field: 'no',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Nama Siswa',
+                    field: 'namasiswa',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Kelas Siswa',
+                    field: 'kelassiswa',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Agama Siswa',
+                    field: 'agamasiswa',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Alamat Siswa',
+                    field: 'alamat',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Action',
+                    field: 'detailsiswa',
+                    sort: 'asc'
+                },
+
+            ],
+            rows: data
+        }
+    }
+
     if (loading) {
         Swal.close()
         return (
@@ -295,15 +375,15 @@ function KelasScreen() {
                                     <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                         <div className="dropdown-header">Action:</div>
                                         <a className="dropdown-item" href="#" data-toggle="modal" data-target="#addModal">
-                                            <i className="mdi mdi-plus" style={{ marginRight: "10px", color: "green" }} />
+                                            <i className="fas fa-plus" style={{ marginRight: "10px", color: "green" }} />
                                             Tambah Kelas
                                         </a>
                                         <a className="dropdown-item" href="#" data-toggle="modal" data-target="#addModal">
-                                            <i className="mdi mdi-plus" style={{ marginRight: "10px", color: "green" }} />
+                                            <i className="fas fa-file-pdf" style={{ marginRight: "10px", color: "blue" }} />
                                             PDF
                                         </a>
                                         <a className="dropdown-item" href="#" data-toggle="modal" data-target="#addModal">
-                                            <i className="mdi mdi-plus" style={{ marginRight: "10px", color: "green" }} />
+                                            <i className="fas fa-file-excel" style={{ marginRight: "10px", color: "greenyellow" }} />
                                             Excel
                                         </a>
                                     </div>
@@ -380,7 +460,7 @@ function KelasScreen() {
                                             <div>
                                                 <h1>
                                                     No Data!
-                                        </h1>
+                                                </h1>
                                             </div>
                                         }
                                     </div>
@@ -477,41 +557,37 @@ function KelasScreen() {
                             height: '1000px'
                         }}>
                             <div className="container">
-                                <table className="table table-striped"
+                                {/* Header */}
+                                <h1
                                     style={{
-                                        marginTop: '11%',
+                                        color: 'black',
+                                        fontWeight: 'bold',
+                                        marginTop: '5%'
                                     }}
                                 >
-
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    <i className="fas fa-graduation-cap" style={{ marginRight: "10px", color: "black" }} /> Data Student {titleKelas}
+                                </h1>
+                                <div style={{
+                                    marginTop: '5%'
+                                }}>
+                                    {/* Table */}
+                                    {tableSiswa ?
+                                        <MDBDataTable
+                                            style={{ color: "black" }}
+                                            sortable={false}
+                                            striped
+                                            noBottomColumns={true}
+                                            data={dataSiswa(tableSiswa)}
+                                            responsive={true}
+                                        />
+                                        :
+                                        <div>
+                                            <h1>
+                                                No Data!
+                                                </h1>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
