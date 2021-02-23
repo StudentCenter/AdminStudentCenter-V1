@@ -57,26 +57,26 @@ function DatasiswaScreen() {
                     <button type="button" className="show btn btn-primary"
                         onClick={e => getIdStudent(e)} id={students[index].id}
                         data-toggle="modal" data-target="#editModal">
-                <small className="text-light">details</small></button>
-            </>
-            rowItem["delete"]=
-            <>
-                    <button type="button" className="show btn btn-danger mr-1" 
-                            onClick={e => deleteStudent(e)} id={students[index].id} >
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        <small className="text-light">details</small></button>
+                </>
+            rowItem["delete"] =
+                <>
+                    <button type="button" className="show btn btn-danger mr-1"
+                        onClick={e => deleteStudent(e)} id={students[index].id} style={{ borderRadius: 10 }}>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                         <small className="text-light">details</small></button>
                 </>
             rowItem["delete"] =
                 <>
 
                     <button type="button" className="show btn btn-danger mr-1"
-                        onClick={e => deleteStudent(e)} id={students[index].id} >
+                        onClick={e => deleteStudent(e)} id={students[index].id} style={{ borderRadius: 5 }} >
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
 
                     <button type="button" className="btn btn-success"
                         onClick={e => getIdStudent(e)} id={students[index].id}
-                        data-toggle="modal" data-target="#modalEdit">
+                        data-toggle="modal" data-target="#modalEdit" style={{ borderRadius: 5 }}>
                         <i class="fa fa-pencil-square" aria-hidden="true"></i>
                     </button>
                 </>

@@ -24,17 +24,17 @@ function KelasScreen() {
             rowItem["no"] = index + 1
             rowItem['kelas'] = kelas[index].kelas
             rowItem['totalsiswa'] = kelas[index].siswa_data.length
-            rowItem['detailsiswa'] = 
-            <>
-                     <button type="button" className="show btn btn-primary" 
-                        data-toggle="modal" data-target="#detailModal">
-                    <small className="text-light">details</small></button>
-            </>
-            rowItem["delete"]=
-            <>
-                   <button type="button" className="show btn btn-danger mr-1" 
-                            onClick={e => deleteKelas(e)} id={kelas[index].id} >
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+            rowItem['detailsiswa'] =
+                <>
+                    <button type="button" className="show btn btn-primary"
+                        data-toggle="modal" data-target="#detailModal" style={{ borderRadius: 5 }}>
+                        <small className="text-light">details</small></button>
+                </>
+            rowItem["delete"] =
+                <>
+                    <button type="button" className="show btn btn-danger mr-1"
+                        onClick={e => deleteKelas(e)} id={kelas[index].id} style={{ borderRadius: 5 }}>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                     <button type="button" className="btn btn-success"
                         onClick={e => getIdKelas(e)} id={kelas[index].id}
@@ -46,7 +46,7 @@ function KelasScreen() {
         }
         setTableKelas(rowsData)
     }
-    
+
     const fetchKelas = async () => {
         try {
             const fetchApiStudents = await fetch(`${URL_API}/kelas`, {
@@ -63,9 +63,9 @@ function KelasScreen() {
 
     useEffect(() => {
         fetchKelas()
-        .then(() => {
-            setLoading(true)
-        })
+            .then(() => {
+                setLoading(true)
+            })
     }, [id_kelas])
 
     // Data kelas
@@ -469,11 +469,15 @@ function KelasScreen() {
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" style={{ color: "black", marginRight: "10px" }}>×</span>
                                 </button>
+                <div className="modal fade" id="detailModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style={{ color: "black", marginRight: "10px" }}>×</span>
+                    </button>
                     <div className="modal-dialog">
                         <div className="modal-content" style={{
                             // borderTopRightRadius: 50,
                             borderTopLeftRadius: 50,
-                            width: '273%', 
+                            width: '273%',
                             marginLeft: '-85%',
                             paddingBottom: '60%',
                         }}>
@@ -513,6 +517,36 @@ function KelasScreen() {
                                 </tr>
                             </tbody>
                             </table>
+                                <table className="table table-striped mt-5 mb-5">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
