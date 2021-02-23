@@ -13,6 +13,7 @@ function KelasScreen() {
     const [kelas, setkelas] = useState('')
     const URL_API = `http://localhost:8000`
     const [id_kelas, setId_kelas] = useState('')
+    const [nama, setNama] = useState('')
 
     // Setting the data table
     const dataTableKelas = kelas => {
@@ -464,20 +465,25 @@ function KelasScreen() {
                 </div>
 
                 {/* <!-- Detail Modal --> */}
-                <div className="modal fade" id="detailModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="detail modal fade" id="detailModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" style={{ color: "black", marginRight: "10px" }}>×</span>
                                 </button>
                     <div className="modal-dialog">
                         <div className="modal-content" style={{
-                            borderTopRightRadius: 50,
+                            // borderTopRightRadius: 50,
                             borderTopLeftRadius: 50,
                             width: '273%', 
                             marginLeft: '-85%',
-                            paddingBottom: '52%',
+                            paddingBottom: '60%',
                         }}>
                             <div className="container">
-                            <table className="table table-striped mt-5 mb-5">
+                            <table className="table table-striped"
+                                style = {{
+                                    marginTop: '11%',
+                                }}
+                            >
+                            
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>
