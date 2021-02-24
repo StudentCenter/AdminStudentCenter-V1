@@ -14,6 +14,14 @@ const DetailSiswa = (props) => {
     const [nisnsiswa, setNisnSiswa] = useState('')
     const [alamatsiswa, setAlamatSiswa] = useState('')
     const [fotosiswa, setFotoSiswa] = useState('')
+    const [anakke, setAnakKe] = useState('')
+    const [nomorsiswa, setNomorSiswa] = useState('')
+    const [namaayah, setNamaAyah] = useState('')
+    const [namaibu, setNamaIbu] = useState('')
+    const [nomorayah, setNomorAyah] = useState('')
+    const [nomoribu, setNomorIbu] = useState('')
+    const [pekerjaanayah, setPekerjaanAyah] = useState('')
+    const [pekerjaanibu, setPekerjaanIbu] = useState('')
 
     // fetch data siswa
     const fetchDetailStudent = async () => {
@@ -29,6 +37,14 @@ const DetailSiswa = (props) => {
             setNisnSiswa(resp.data.nisn)
             setAlamatSiswa(resp.data.alamat)
             setFotoSiswa(resp.data.foto_siswa)
+            setAnakKe(resp.data.anak_ke)
+            setNomorSiswa(resp.data.no_hp_siswa)
+            setNamaAyah(resp.data.nama_ayah)
+            setNamaIbu(resp.data.nama_ibu)
+            setNomorAyah(resp.data.no_hp_ayah)
+            setNomorIbu(resp.data.no_hp_ibu)
+            setPekerjaanAyah(resp.data.pekerjaan_ayah)
+            setPekerjaanIbu(resp.data.pekerjaan_ibu)
         } catch (error) {
             console.log(error)
             alert(error)
@@ -83,6 +99,7 @@ const DetailSiswa = (props) => {
                                             placeholder="Input nama siswa"
                                             value={namasiswa}
                                             onChange={(e) => setNamaSiswa(e.target.value)}
+                                            disabled
                                         />
                                     </div>
                                     <div className="form-group">
@@ -93,6 +110,7 @@ const DetailSiswa = (props) => {
                                             placeholder="Input nisn siswa"
                                             value={nisnsiswa}
                                             onChange={(e) => setNisnSiswa(e.target.value)}
+                                            disabled
                                         />
                                     </div>
                                     <div className="form-group mb-4">
@@ -102,6 +120,7 @@ const DetailSiswa = (props) => {
                                             id="exampleFormControlSelect1"
                                             value={kelassiswa}
                                             onChange={(e) => setKelasSiswa(e.target.value)}
+                                            disabled
                                         >
                                             <option selected>Choose...</option>
                                             {datakelas ?
@@ -128,6 +147,29 @@ const DetailSiswa = (props) => {
                                             placeholder="Input agama siswa"
                                             value={agamasiswa}
                                             onChange={(e) => setAgamaSiswa(e.target.value)}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Anak Ke</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Input anak ke"
+                                            value={anakke}
+                                            onChange={(e) => setAnakKe(e.target.value)}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Nomor Handphone Siswa</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Input nomor hp siswa"
+                                            value={nomorsiswa}
+                                            onChange={(e) => setNomorSiswa(e.target.value)}
+                                            disabled
                                         />
                                     </div>
                                     <div className="form-group">
@@ -137,6 +179,73 @@ const DetailSiswa = (props) => {
                                             placeholder="Input alamat siswa"
                                             value={alamatsiswa}
                                             onChange={(e) => setAlamatSiswa(e.target.value)}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Nama Ayah</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Input nama ayah"
+                                            value={namaayah}
+                                            onChange={(e) => setNamaAyah(e.target.value)}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Pekerjaan Ayah</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Input pekerjaan ayah"
+                                            value={pekerjaanayah}
+                                            onChange={(e) => setPekerjaanAyah(e.target.value)}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Nomor Handphone Ayah</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Input handphone ayah"
+                                            value={nomorayah}
+                                            onChange={(e) => setNomorAyah(e.target.value)}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Nama Ibu</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Input nama ibu"
+                                            value={namaibu}
+                                            onChange={(e) => setNamaIbu(e.target.value)}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Pekerjaan Ibu</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Input nama ibu"
+                                            value={pekerjaanibu}
+                                            onChange={(e) => setNamaIbu(e.target.value)}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Nomor Handphone Ibu</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Input handphone ibu"
+                                            value={nomoribu}
+                                            onChange={(e) => setNomorIbu(e.target.value)}
+                                            disabled
                                         />
                                     </div>
                                 </form>
@@ -145,7 +254,7 @@ const DetailSiswa = (props) => {
                     </div>
                     <div className="col-lg-4">
                         <div className="card">
-                            <img src={fotosiswa} alt="Foto_siswa" style={{ width: '100%', borderRadius: 10 }} />
+                            <img src={fotosiswa} alt="Foto_siswa" style={{ width: '100%', borderRadius: 5 }} />
                         </div>
                     </div>
                 </div>
