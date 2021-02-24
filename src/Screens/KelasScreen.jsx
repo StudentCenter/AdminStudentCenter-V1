@@ -25,23 +25,18 @@ function KelasScreen() {
             rowItem["no"] = index + 1
             rowItem['kelas'] = kelas[index].kelas
             rowItem['totalsiswa'] = kelas[index].siswa_data.length
-            rowItem['detailsiswa'] =
-                <>
-                    <button type="button" className="show btn btn-primary"
-                        data-toggle="modal" data-target="#detailModal" onClick={e => getSiswaId(e)} id={kelas[index].id} style={{ borderRadius: 5 }} >
-                        <small className="text-light">details</small></button>
-                </>
             rowItem["delete"] =
                 <>
-                    <button type="button" className="show btn btn-danger mr-1"
-                        onClick={e => deleteKelas(e)} id={kelas[index].id} >
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-                    <button type="button" className="btn btn-success"
-                        onClick={e => getIdKelas(e)} id={kelas[index].id}
-                        data-toggle="modal" data-target="#modalEdit" style={{ borderRadius: 5 }}>
-                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                    </button>
+                    <div className="dropdown">
+                        <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <i class="fa fa-sort-down" aria-hidden="true" style={{ marginRight: '5%', color: 'white' }}></i>
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ borderRadius: 10 }}>
+                            <a className="dropdown-item" href="#" onClick={e => deleteKelas(e)} id={kelas[index].id} style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-trash" aria-hidden="true" style={{ marginRight: '5%', color: 'red' }}></i> Delete</a>
+                            <a className="dropdown-item" href="#" onClick={e => getIdKelas(e)} id={kelas[index].id} data-toggle="modal" data-target="#modalEdit" style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-pencil-square" aria-hidden="true" style={{ marginRight: '5%', color: 'blue' }}></i> Edit</a>
+                            <a className="dropdown-item" href="#" data-toggle="modal" data-target="#detailModal" onClick={e => getSiswaId(e)} id={kelas[index].id} style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-info-circle" aria-hidden="true" style={{ marginRight: '5%', color: 'magenta' }}></i> Detail</a>
+                        </div>
+                    </div>
                 </>
             rowsData.push(rowItem)
         }
@@ -86,11 +81,6 @@ function KelasScreen() {
                 {
                     label: 'Total Siswa',
                     field: 'totalsiswa',
-                    sort: 'asc'
-                },
-                {
-                    label: 'Detail Data',
-                    field: 'detailsiswa',
                     sort: 'asc'
                 },
                 {
@@ -584,7 +574,7 @@ function KelasScreen() {
                                         <div>
                                             <h1>
                                                 No Data!
-                                                </h1>
+                                            </h1>
                                         </div>
                                     }
                                 </div>

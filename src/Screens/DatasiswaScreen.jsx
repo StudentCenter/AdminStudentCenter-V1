@@ -53,26 +53,20 @@ function DatasiswaScreen() {
                 <>
                     <img style={{ width: "30px" }} src={students[index].foto_siswa} alt="" />
                 </>
-            rowItem["action"] =
-                <>
-                    <button type="button" className="show btn btn-primary"
-                        onClick={e => getIdStudent(e)} id={students[index].id}
-                        data-toggle="modal" data-target="#editModal" style={{ borderRadius: 5 }}>
-                        <small className="text-light">details</small></button>
-                </>
             rowItem["delete"] =
                 <>
-
-                    <button type="button" className="show btn btn-danger mr-1"
-                        onClick={e => deleteStudent(e)} id={students[index].id} style={{ borderRadius: 5 }} >
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-
-                    <button type="button" className="btn btn-success"
-                        onClick={e => getIdStudent(e)} id={students[index].id}
-                        data-toggle="modal" data-target="#modalEdit" style={{ borderRadius: 5 }}>
-                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                    </button>
+                    <div className="dropdown">
+                        <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <i class="fa fa-sort-down" aria-hidden="true" style={{ marginRight: '5%', color: 'white' }}></i>
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ borderRadius: 10 }}>
+                            <a className="dropdown-item" href="#" onClick={e => deleteStudent(e)} id={students[index].id} style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-trash" aria-hidden="true" style={{ marginRight: '5%', color: 'red' }}></i> Delete</a>
+                            <a className="dropdown-item" href="#" onClick={e => getIdStudent(e)} id={students[index].id}
+                                data-toggle="modal" data-target="#modalEdit" style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-pencil-square" aria-hidden="true" style={{ marginRight: '5%', color: 'blue' }}></i> Edit</a>
+                            <a className="dropdown-item" href="#" onClick={e => getIdStudent(e)} id={students[index].id}
+                                data-toggle="modal" data-target="#editModal" style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-info-circle" aria-hidden="true" style={{ marginRight: '5%', color: 'magenta' }}></i> Detail</a>
+                        </div>
+                    </div>
                 </>
             rowsData.push(rowItem)
         }
@@ -154,11 +148,6 @@ function DatasiswaScreen() {
                 {
                     label: 'Foto',
                     field: 'foto_siswa',
-                    sort: 'asc'
-                },
-                {
-                    label: 'Action',
-                    field: 'action',
                     sort: 'asc'
                 },
                 {
