@@ -63,8 +63,7 @@ function DatasiswaScreen() {
                             <a className="dropdown-item" href="#" onClick={e => deleteStudent(e)} id={students[index].id} style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-trash" aria-hidden="true" style={{ marginRight: '5%', color: 'red' }}></i> Delete</a>
                             <a className="dropdown-item" href="#" onClick={e => getIdStudent(e)} id={students[index].id}
                                 data-toggle="modal" data-target="#modalEdit" style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-pencil-square" aria-hidden="true" style={{ marginRight: '5%', color: 'blue' }}></i> Edit</a>
-                            <a className="dropdown-item" href="#" onClick={e => getIdStudent(e)} id={students[index].id}
-                                data-toggle="modal" data-target="#editModal" style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-info-circle" aria-hidden="true" style={{ marginRight: '5%', color: 'magenta' }}></i> Detail</a>
+                            <a className="dropdown-item" href={'/detailsiswa/' + students[index].id} style={{ width: '90%', marginLeft: '5%', borderRadius: 10 }}><i class="fa fa-info-circle" aria-hidden="true" style={{ marginRight: '5%', color: 'magenta' }}></i> Detail</a>
                         </div>
                     </div>
                 </>
