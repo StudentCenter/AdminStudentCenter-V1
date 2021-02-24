@@ -12,6 +12,7 @@ import DatasiswaScreen from './Screens/DatasiswaScreen';
 import KelasScreen from './Screens/KelasScreen';
 import BKScreen from './Screens/BKScreen';
 import DetailSiswa from './Screens/DetailSiswa';
+import LoginScreen from './Auth/LoginScreen';
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
 
       <Router>
         <Switch>
+              <Route exact path='/'>
+                <LoginScreen/>
+              </Route>
+
           <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
             {/* Header */}
             <header className="topbar" data-navbarbg="skin6">
@@ -265,7 +270,7 @@ function App() {
             <div className="page-wrapper">
 
               {/* Route Dashboard*/}
-              <Route exact path='/'>
+              <Route path="/home">
                 <HomeScreen/>
               </Route>
 
