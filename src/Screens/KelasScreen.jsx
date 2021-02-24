@@ -290,9 +290,8 @@ function KelasScreen() {
             rowItem['alamat'] = siswa[index].alamat
             rowItem['detailsiswa'] =
                 <>
-                    <button type="button" className="show btn btn-primary"
-                        data-toggle="modal" data-target="#detailModal" onClick={e => getSiswaId(e)} id={siswa[index].id} >
-                        <small className="text-light">details</small></button>
+                    <a href={'/detailsiswa/' + siswa[index].id}>
+                        <small className="text-blue">Details</small></a>
                 </>
             rowsData.push(rowItem)
         }

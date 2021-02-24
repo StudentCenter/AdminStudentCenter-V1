@@ -11,6 +11,7 @@ import EkskulScreen from './Screens/EkskulScreen';
 import DatasiswaScreen from './Screens/DatasiswaScreen';
 import KelasScreen from './Screens/KelasScreen';
 import BKScreen from './Screens/BKScreen';
+import DetailSiswa from './Screens/DetailSiswa';
 
 function App() {
   return (
@@ -297,6 +298,14 @@ function App() {
               <Route path="/bimbingankonseling">
                 <BKScreen/>
               </Route>
+
+              <Route 
+                path="/detailsiswa"
+                render={props => (
+                  <DetailSiswa {...props} />
+                )}
+              />
+                
 
             {/* Footer */}
             <footer className="footer text-center text-muted">
