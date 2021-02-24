@@ -243,15 +243,15 @@ function App() {
                                 </li>
                             </ul>
                     </li>
-                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/datasiswa" aria-expanded="false"><i data-feather="message-square" className="feather-icon" /><span className="hide-menu">Data Siswa</span></a></li>             
+                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/datasiswa" aria-expanded="false"><i  className="fas fa-user" /><span className="hide-menu">Data Siswa</span></a></li>             
                     <li className="list-divider" />
                     <li className="nav-small-cap"><span className="hide-menu">Kurikulum</span></li>
-                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/kehadiran" aria-expanded="false"><i data-feather="message-square" className="feather-icon" /><span className="hide-menu">Kehadiran Siswa</span></a></li>
-                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/ekskul" aria-expanded="false"><i data-feather="calendar" className="feather-icon" /><span className="hide-menu">Ekstrakulikuler</span></a></li>
-                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/kelas" aria-expanded="false"><i data-feather="calendar" className="feather-icon" /><span className="hide-menu">Kelas</span></a></li>  
+                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/kehadiran" aria-expanded="false"><i className="far fa-newspaper" /><span className="hide-menu">Kehadiran Siswa</span></a></li>
+                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/ekskul" aria-expanded="false"><i className="fas fa-baseball-ball" /><span className="hide-menu">Ekstrakulikuler</span></a></li>
+                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/kelas" aria-expanded="false"><i  className="far fa-address-book" /><span className="hide-menu">Rombongan Kelas</span></a></li>  
                     <li className="list-divider" />
                     <li className="nav-small-cap"><span className="hide-menu">Bimbingan Konseling</span></li>
-                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/bimbingankonseling" aria-expanded="false"><i data-feather="calendar" className="feather-icon" /><span className="hide-menu">Bimibingan Konseling</span></a></li>
+                    <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/bimbingankonseling" aria-expanded="false"><i data-feather="calendar" className="feather-icon" /><span className="hide-menu">Bimbingan Konseling</span></a></li>
                     <li className="list-divider" />
                   </ul>
                 </nav>
