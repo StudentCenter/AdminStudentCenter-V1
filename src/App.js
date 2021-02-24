@@ -221,7 +221,28 @@ function App() {
                     <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/" aria-expanded="false"><i data-feather="home" className="feather-icon" /><span className="hide-menu">Dashboard</span></a></li>
                     <li className="list-divider" />
                     <li className="nav-small-cap"><span className="hide-menu">Pendaftaran PPDB</span></li>
-                    <li className="sidebar-item"> <a className="sidebar-link" href="/ppdb" aria-expanded="false"><i data-feather="tag" className="feather-icon" /><span className="hide-menu">PPDB</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                                    class="hide-menu">PPDB </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
+                                            class="hide-menu"> Dashboard
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
+                                            class="hide-menu"> Calon Siswa
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="form-checkbox-radio.html" class="sidebar-link"><span
+                                            class="hide-menu"> Calon Siswa Terdaftar
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="form-checkbox-radio.html" class="sidebar-link"><span
+                                            class="hide-menu"> Calon Siswa Diterima
+                                        </span></a>
+                                </li>
+                            </ul>
+                    </li>
                     <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="/datasiswa" aria-expanded="false"><i data-feather="message-square" className="feather-icon" /><span className="hide-menu">Data Siswa</span></a></li>             
                     <li className="list-divider" />
                     <li className="nav-small-cap"><span className="hide-menu">Kurikulum</span></li>
