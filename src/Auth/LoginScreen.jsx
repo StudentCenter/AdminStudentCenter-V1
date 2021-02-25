@@ -36,7 +36,7 @@ const LoginScreen = (props) => {
                         MySwal.showLoading()
                     }
                 })
-                props.history.push('/home')
+                window.location.replace('/home')
             } else {
                 MySwal.fire({
                     icon: 'error',

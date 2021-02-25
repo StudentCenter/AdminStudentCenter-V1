@@ -12,6 +12,7 @@ const NavbarComponent = (props) => {
     }
 
     const logout = async () => {
+        // localStorage.clear()
         MySwal.fire({
             title: 'currently logged out of account...',
             didOpen: () => {
